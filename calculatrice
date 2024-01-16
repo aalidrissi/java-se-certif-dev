@@ -1,0 +1,65 @@
+package javademo;
+
+import enumd.Operation;
+
+public  class Calculatrice {
+
+	
+	public static void main(String[] args) {
+		//opetation 
+		int i = Integer.valueOf(args[0]) ;
+		int j = Integer.valueOf(args[1]) ;
+
+		
+		double resultat = 0;
+		Operation operation = Operation.OPERATION_SOMME;
+		
+		// exucution calcul
+		resultat= calcul(i, j, operation);
+		
+		// eval du résultat
+		if(operation != null ) 
+			System.out.print("résultat de la somme : " + resultat);
+		
+	}
+	
+	
+	/**
+	 * @param i
+	 *          premier paramètre d'entrée 
+	 * @param j
+	 * 			deuxième paramètre d'entrée 
+	 * @param operation
+	 * @return
+	 */
+	public static double calcul (int i, int j, Operation operation) {
+		double retour = 0;
+		
+		if(operation !=null && 
+				operation.name().equals(Operation.OPERATION_SOMME.name())) {
+			//
+			retour= i + j;
+		} else if(operation !=null && 
+				operation.name().equals(Operation.OPERATION_SOUSTRACTION.name())){
+			//
+			retour = i - j;
+		} else if(operation !=null && 
+				operation.name().equals(Operation.OPERATION_DIVISION.name())){
+			//
+			retour = i / j;
+		} else if(operation !=null && 
+				operation.name().equals(Operation.OPERATION_MULTIPLICATION.name())){
+			//
+			retour = i * j;
+		} else {
+			System.out.print("Operation inconnu");
+		}
+		
+		return retour;
+	}
+	
+//	public float calcul (int i, int j, String operation){
+//		
+//	}
+
+}
