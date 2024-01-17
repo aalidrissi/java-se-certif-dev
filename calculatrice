@@ -1,5 +1,8 @@
 package javademo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import enumd.Operation;
 
 public  class Calculatrice {
@@ -7,19 +10,37 @@ public  class Calculatrice {
 	
 	public static void main(String[] args) {
 		//opetation 
-		int i = Integer.valueOf(args[0]) ;
-		int j = Integer.valueOf(args[1]) ;
+//		int i = Integer.valueOf(args[0]) ;
+//		int j = Integer.valueOf(args[1]) ;
 
 		
-		double resultat = 0;
-		Operation operation = Operation.OPERATION_SOMME;
+//		double resultat = 0;
+//		Operation operation = Operation.OPERATION_SOMME;
 		
 		// exucution calcul
-		resultat= calcul(i, j, operation);
+		//resultat= calcul(i, j, operation);
 		
 		// eval du résultat
-		if(operation != null ) 
-			System.out.print("résultat de la somme : " + resultat);
+//		if(operation != null ) 
+//			System.out.print("résultat de la somme : " + resultat);
+		
+		//printDayOfWeekLambda(1);
+		
+//		int[][] myComplexArray = {{5,2,1,3},{3,9,8,9},{5,7,12,7}};
+//
+//		OUTER_LOOP:  for (int[] mySimpleArray : myComplexArray) {
+//			 INNER_LOOP: for (int i = 0; i < mySimpleArray.length; i++) {
+//		        System.out.print(mySimpleArray[i] + "\t");
+//		        continue;
+//		    }
+//		    System.out.println();
+//		}
+		
+		int result = factoriel(5);
+	    System.out.println(result);
+	    
+	    int resultrec = factorielRecursive(3);
+	    System.out.println(resultrec);
 		
 	}
 	
@@ -58,8 +79,69 @@ public  class Calculatrice {
 		return retour;
 	}
 	
-//	public float calcul (int i, int j, String operation){
-//		
-//	}
+
+	public static void printDayOfWeek(int day) {
+	    switch(day) {
+	        case 0:
+	            System.out.print("Sunday");
+	            break;
+	        case 1:
+	            System.out.print("Monday");
+	            break;
+	        case 2:
+	            System.out.print("Tuesday");
+	            break;
+	        default:
+	            System.out.print("Invalid value");
+	            break;
+	    } 
+	}
+	
+	public static void printDayOfWeekLambda(int day) {
+	    var result = switch(day) {
+	        case 0 -> "Sunday";
+	        case 1 -> "Monday";
+	        case 2 -> "Tuesday";
+	        default -> "Invalid value";
+	    };
+	    System.out.print(result);
+	}
+	
+	public void printNames(String[] names) {
+	    for (int counter = 0; counter < names.length; counter++)
+	        System.out.println(names[counter]);
+	    
+	    List<String> list = new ArrayList<String>();
+	    
+	    for(String name : names) {
+	        System.out.println(name);
+	    }
+	    
+	    for(String l : list) {
+	    	
+	    }
+	} 
+	
+	public static int factoriel(int i) {
+		int resultat = 1;
+		for (int k = 1 ; k<= i ; k++) {
+			resultat *= k;
+			//resultat = resultat * k;
+		}
+		
+		return resultat;
+	}
+	
+
+	public static int factorielRecursive(int i) {
+		if(i<= 1) {
+			return 1;
+		} else {
+			return i*factorielRecursive(i-1);
+		}
+	}
+
+
+
 
 }
