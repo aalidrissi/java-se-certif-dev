@@ -1,0 +1,45 @@
+package javademo;
+
+public class LecteurIsbn {
+	
+	public static boolean convertisseur(String isbn13) {
+		
+		// ici on écrit le code
+		int chiffre = 0;
+		int facteur = 10;  //10 => 9 = > 8 ...
+		int resultat = 0;
+		
+		boolean isIsbnValid = false;
+
+		for (int i =0 ; i < isbn13.length() ; i++) {
+			// si on rencontre un tiré alors on passe la main
+			if("-".equals(isbn13.charAt(i)+"")) {
+				continue;
+			} else {
+//				si on ne rencontre pas de tiré alors on 
+//				multiplie par le facture et on additionne 
+//				vers la valeur resultat
+				chiffre = Integer.parseInt(isbn13.charAt(i)+"");
+				resultat +=chiffre * facteur;
+				facteur--;
+			}
+		}
+		
+		isIsbnValid = ((resultat % 11) == 0) ? true : false;
+		
+		return isIsbnValid;
+	}
+	
+	public static void main(String[] args) {
+		
+		
+		if(convertisseur("3-598-21576-8")) {
+			System.out.print("ISBN valide");
+		} else {
+			System.out.print("ISBN non valide");
+		}
+		
+	
+	}
+
+}
